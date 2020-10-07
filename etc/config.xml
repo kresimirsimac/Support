@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <support>
+            <general>
+                <enable>1</enable>
+                <display_text>Support text for display.</display_text>
+            </general>
+        </support>
+    </default>
+    <default>
+        <support_mail>
+            <new_ticket_notification>
+                <enable>1</enable>
+                <email_identity>support</email_identity>
+                <email_template>support_mail_new_ticket_notification_email_template</email_template>
+            </new_ticket_notification>
+        </support_mail>  
+    </default>
+    <default>
+        <support_mail>
+            <admin_reply_ticket_notification>
+                <enable>1</enable>
+                <email_identity>support</email_identity>
+                <email_template>support_mail_admin_reply_ticket_notification_email_template</email_template>
+            </admin_reply_ticket_notification>
+        </support_mail>
+    </default>
+    <default>
+        <support_mail>
+            <new_customer_reply_notification>
+                <enable>1</enable>
+                <email_identity>support</email_identity>
+                <email_template>support_mail_new_customer_reply_notification_email_template</email_template>
+            </new_customer_reply_notification>
+        </support_mail>
+    </default>
+    <default>
+        <support_mail>
+            <customer_edit_reply_notification>
+                <enable>1</enable>
+                <email_identity>support</email_identity>
+                <email_template>support_mail_customer_edit_reply_notification_email_template</email_template>
+            </customer_edit_reply_notification>
+        </support_mail>
+    </default>
+    <default>
+        <support_mail>
+            <customer_delete_reply_notification>
+                <enable>1</enable>
+                <email_identity>support</email_identity>
+                <email_template>support_mail_customer_delete_reply_notification_email_template</email_template>
+            </customer_delete_reply_notification>
+        </support_mail>
+    </default>
+</config>

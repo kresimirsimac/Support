@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<!--@subject {{trans "Hello \"%customer_name\"!" customer_name=$name}} @-->
+<!--@vars {
+"customer_name": "Customer Name",
+} @-->
+
+{{template config_path="design/email/header_template"}}
+
+<p>
+    {{trans 'Hello <strong>%name</strong>!' name=$name |raw}}
+</p>
+<p>
+    {{trans 'You have a new reply on Your ticket <strong>%topic</strong>.' topic=$topic |raw}}
+</p>
+{{template config_path="design/email/footer_template"}}

@@ -1,0 +1,25 @@
+<form class="form-reply-create"
+      action="<?= $block->getPostActionUrl() ?>"
+      method="post"
+      id="form-reply">
+    <?= $block->getBlockHtml('formkey') ?>
+    <fieldset class="fieldset">
+        <legend class="legend"><span><?= $block->escapeHtml(__('Submit a Reply')) ?></span></legend>
+        <input type="hidden" name="support_id" value="<?= $block->getCurrentId() ?>" />
+        <label>
+            Enter Your Reply <textarea type="text" name="comment" id="comment"></textarea>
+        </label>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <button type="submit" class="action submit primary" title="<?= $block->escapeHtmlAttr(__('Submit a Reply')) ?>">
+                <span><?= $block->escapeHtml(__('Submit a Reply')) ?></span>
+            </button>
+        </div>
+    </div> 
+</form><br/><br/>
+<div class="secondary">
+    <a class="action back" href="<?= $block->getBackUrl() ?>">
+        <span><?= $block->escapeHtml(__('All Tickets')) ?></span>
+    </a>
+</div>

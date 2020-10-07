@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Iweb_Support::support" title="Iweb Support" module="Iweb_Support" sortOrder="50" resource="Iweb_Support::support"/>
+        <add id="Iweb_Support::ticket" title="Support Tickets" module="Iweb_Support" sortOrder="10" action="iweb_support/ticket" resource="Iweb_Support::ticket" parent="Iweb_Support::support"/>
+        <add id="Iweb_Support::support_configuration" title="Configuration" module="Iweb_Support" sortOrder="20" parent="Iweb_Support::support" action="adminhtml/system_config/edit/section/support" resource="Iweb_Support::suport_configuration"/>
+        <add id="Iweb_Support::new_ticket_notification" title="Notifications" module="Iweb_Support" sortOrder="30" parent="Iweb_Support::support" action="adminhtml/system_config/edit/section/notification" resource="Iweb_Support::new_ticket_notification"/>
+    </menu>
+</config>

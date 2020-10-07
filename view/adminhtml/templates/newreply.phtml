@@ -1,0 +1,29 @@
+<form class="form-reply-create"
+      action="<?= $block->getPostActionUrl() ?>"
+      method="post"
+      id="form-reply">
+    <?= $block->getBlockHtml('formkey') ?>
+    <legend class="legend">
+        <span>
+            <strong><?= $block->escapeHtml(__('New Reply : ')) ?></strong>
+        </span>
+    </legend>
+    <br/>
+    <input type="hidden" name="support_id" value="<?= $block->getCurrentId() ?>" />
+    <div class="admin_field">
+        <label for="comment" class="admin_field_label">
+            <?= /* @noEscape */ __('Comment') ?>
+        </label>
+        <div class="admin_field-control">
+            <textarea type="text" name="comment" id="comment" rows="2" cols="50"></textarea>
+        </div>
+    </div>   
+    <br/><br/>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <button type="submit" class="action submit primary" title="<?= $block->escapeHtmlAttr(__('Submit a Reply')) ?>">
+                <span><?= $block->escapeHtml(__('Submit a Reply')) ?></span>
+            </button>
+        </div>
+    </div>
+</form>

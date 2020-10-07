@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="styles"/>
+    <body>
+        <referenceContainer name="content">
+                <block class="Iweb\Support\Block\Adminhtml\Ticket\Reply\Grid\Container" name="support_reply_grid">
+                    <block class="Magento\Backend\Block\Widget\Grid" name="support_reply_grid.grid" as="grid">
+                        <arguments>
+                            <argument name="id" xsi:type="string">replyGrid</argument>
+                            <argument name="save_parameters_in_session" xsi:type="string">1</argument>
+                            <argument name="dataSource" xsi:type="object" shared="false">Iweb\Support\Model\ResourceModel\Reply\Grid\Collection</argument>
+                        </arguments>
+                        <block class="Magento\Backend\Block\Widget\Grid\Massaction" name="support.reply.grid.massactions" as="grid.massaction">
+                            <arguments>
+                                <argument name="massaction_id_field" xsi:type="string">id</argument>
+                                <argument name="form_field_name" xsi:type="string">id</argument>
+                                <argument name="use_select_all" xsi:type="string">1</argument>
+                                <argument name="options" xsi:type="array">
+                                    <item name="hide" xsi:type="array">
+                                        <item name="label" xsi:type="string" translate="true">Hide Reply</item>
+                                        <item name="url" xsi:type="string">iweb_support/reply/massHide/</item>
+                                        <item name="visible" xsi:type="object">\Iweb\Support\Block\Adminhtml\Reply\VisibilityChecker</item>
+                                    </item>
+                                    <item name="show" xsi:type="array">
+                                        <item name="label" xsi:type="string" translate="true">Show Reply</item>
+                                        <item name="url" xsi:type="string">iweb_support/reply/massShow/</item>
+                                        <item name="visible" xsi:type="object">\Iweb\Support\Block\Adminhtml\Reply\VisibilityChecker</item>
+                                    </item>
+                                    <item name="delete" xsi:type="array">
+                                        <item name="label" xsi:type="string" translate="true">Delete</item>
+                                        <item name="url" xsi:type="string">iweb_support/reply/massDelete/</item>
+                                        <item name="confirm" xsi:type="string" translate="true">Are you sure you want to delete these items?</item>
+                                    </item>
+                                </argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\ColumnSet" name="support_reply_grid.grid.columnSet" as="grid.columnSet">
+                            <arguments>
+                                <argument name="rowUrl" xsi:type="array">
+                                    <item name="path" xsi:type="string">*/*/reply</item>
+                                </argument>
+                            </arguments>
+                            <block class="Magento\Backend\Block\Widget\Grid\Column" name="support_id">
+                                <arguments>
+                                    <argument name="header" xsi:type="string" translate="true">Ticket ID</argument>
+                                    <argument name="index" xsi:type="string">support_id</argument>
+                                    <argument name="type" xsi:type="string">text</argument>
+                                    <argument name="column_css_class" xsi:type="string">col-id</argument>
+                                    <argument name="header_css_class" xsi:type="string">col-id</argument>
+                                </arguments>
+                            </block>
+                            <block class="Magento\Backend\Block\Widget\Grid\Column" name="replied_by">
+                                <arguments>
+                                    <argument name="header" xsi:type="string" translate="true">Replied By</argument>
+                                    <argument name="index" xsi:type="string">admin_id</argument>
+                                    <argument name="type" xsi:type="string">text</argument>
+                                    <argument name="column_css_class" xsi:type="string">col-id</argument>
+                                    <argument name="header_css_class" xsi:type="string">col-id</argument>
+                                    <argument name="renderer" xsi:type="string">Iweb\Support\Block\Adminhtml\Reply\Grid\Column\Renderer\RepliedBy</argument>
+                                </arguments>
+                            </block>
+                            <block class="Magento\Backend\Block\Widget\Grid\Column" name="description">
+                                <arguments>
+                                    <argument name="header" xsi:type="string" translate="true">Comment</argument>
+                                    <argument name="index" xsi:type="string">comment</argument>
+                                    <argument name="type" xsi:type="string">text</argument>
+                                    <argument name="column_css_class" xsi:type="string">col-id</argument>
+                                    <argument name="header_css_class" xsi:type="string">col-id</argument>
+                                </arguments>
+                            </block>
+                            <block class="Magento\Backend\Block\Widget\Grid\Column" name="created_at">
+                                <arguments>
+                                    <argument name="header" xsi:type="string" translate="true">Created</argument>
+                                    <argument name="index" xsi:type="string">created_at</argument>
+                                    <argument name="type" xsi:type="string">datetime</argument>
+                                    <argument name="column_css_class" xsi:type="string">col-id</argument>
+                                    <argument name="header_css_class" xsi:type="string">col-id</argument>
+                                </arguments>
+                            </block>
+                            <block class="Magento\Backend\Block\Widget\Grid\Column" name="visible">
+                                <arguments>
+                                    <argument name="header" xsi:type="string" translate="true">Visibility</argument>
+                                    <argument name="index" xsi:type="string">visible</argument>
+                                    <argument name="type" xsi:type="string">text</argument>
+                                    <argument name="column_css_class" xsi:type="string">col-id</argument>
+                                    <argument name="header_css_class" xsi:type="string">col-id</argument>
+                                </arguments>
+                            </block>
+                            <block class="Magento\Backend\Block\Widget\Grid\Column" name="action">
+                                <arguments>
+                                    <argument name="header" xsi:type="string" translate="true">Action</argument>
+                                    <argument name="type" xsi:type="string">action</argument>
+                                    <argument name="getter" xsi:type="string">getId</argument>
+                                    <argument name="filter" xsi:type="string">0</argument>
+                                    <argument name="sortable" xsi:type="string">0</argument>
+                                    <argument name="actions" xsi:type="array">
+                                        <item name="edit_action" xsi:type="array">
+                                            <item name="caption" xsi:type="string" translate="true">Delete</item>
+                                            <item name="url" xsi:type="array">
+                                                <item name="base" xsi:type="string">*/reply/delete</item>
+                                            </item>
+                                            <item name="field" xsi:type="string">reply_id</item>
+                                        </item>
+                                    </argument>
+                                </arguments>
+                            </block>
+                        </block>
+                    </block>
+                </block>
+                <block>
+                    <referenceBlock name="content">
+                        <block class="Iweb\Support\Block\Adminhtml\Reply\Replydata" name="iweb.support.newreply" template="Iweb_Support::newreply.phtml"/>
+                    </referenceBlock>
+                </block>
+        </referenceContainer>
+    </body>
+</page>

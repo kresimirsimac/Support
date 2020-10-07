@@ -1,0 +1,36 @@
+<form class="form-ticket-create"
+      action="<?= $block->getPostActionUrl() ?>"
+      method="post"
+      id="form-support">
+    <?= $block->getBlockHtml('formkey') ?>
+    <fieldset class="fieldset">
+        <legend class="legend"><span><?= $block->escapeHtml(__('Create New Ticket')) ?></span></legend>
+        <label>Type of Issue
+            <select name="title" id="title">
+                <option>Please select a topic</option>
+                <option>---------------------</option>
+                <option>Topic 1</option>
+                <option>Topic 2</option>
+                <option>Topic 3</option>
+                <option>Topic 4</option>
+                <option>Topic 5</option>
+            </select>
+        </label>
+        <label>
+            Describe Your Issue <textarea type="text" name="description" id="description"></textarea>
+        </label>
+    </fieldset>
+    <div class="action-toolbar">
+        <div class="primary">
+            <button type="submit" class="action submit primary" title="<?= $block->escapeHtmlAttr(__('Create New Ticket')) ?>">
+                <span><?= $block->escapeHtml(__('Create New Ticket')) ?></span>
+            </button>
+        </div>
+    </div>
+    <br/><br/>
+    <div class="secondary">
+    <a class="action back" href="<?= $block->getBackUrl() ?>">
+        <span><?= $block->escapeHtml(__('Back to Support Page')) ?></span>
+    </a>
+    </div>
+</form>

@@ -1,0 +1,60 @@
+<?php
+$tickets = $block->getTicketList();
+?>
+<div class="block block-support-list">
+    <div class="block-title">
+        <strong>
+            <?= $block->escapeHtml(__('Your Tickets')) ?>
+        </strong>
+    </div>
+    <div class="block-content">
+        <div class="table-wrapper support-tickets">
+            <table class="data table my-tickets-table" id="my-tickets-table">
+                <caption class="table-caption"><?= 'Your Tickets' ?></caption>
+                <thead>
+                    <tr>
+                        <th scope="col" class="col title"><?= 'Title' ?></th>
+                        <th scope="col" class="col description"><?= 'Description' ?></th>
+                        <th scope="col" class="col noOfReplies"><?= 'Replies' ?></th>
+                        <th scope="col" class="col visible"><?= 'Visible Replies' ?></th>
+                        <th scope="col" class="col status"><?= 'Ticket Status' ?></th>
+                        <th scope="col" class="col actions"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($tickets as $ticket) : ?>
+                        <?php if ($block->getCurrentId() == $ticket->getCustomerId()) : ?>
+                            <tr>
+                                <td data-th="<?= $block->escapeHtml(__('Title')) ?>" class="col title"><?= $block->escapeHtml($ticket->getTitle()) ?></td>
+                                <td data-th="<?= $block->escapeHtml(__('Description')) ?>" class="col description"><?= $block->escapeHtml($ticket->getDescription()) ?></td>
+                                <td data-th="<?= $block->escapeHtml(__('Replies')) ?>" class="col noOfReplies"><?= $block->escapeHtml($block->noOfReplies($ticket->getId())) ?></td>
+                                <td data-th="<?= $block->escapeHtml(__('Visible Replies')) ?>" class="col visible"><?= $block->escapeHtml($block->noOfVisibleReplies($ticket->getId())) ?></td>
+                                <td data-th="<?= $block->escapeHtml(__('Status')) ?>" class="col status"><?= $block->escapeHtml($ticket->getStatus()) ?></td>
+                                <td data-th="<?= $block->escapeHtml(__('Actions')) ?>" class="col actions">
+                                <?php if ($block->ticketStatus($ticket->getId()) == 'active') : ?>
+                                    <a class="action reply" href="<?= $block->escapeUrl($block->getUrl('support/reply/newreply', ['id' => $ticket->getId()])) ?>">
+                                        <span><?= $block->escapeHtml(__('Reply')) ?></span>
+                                    </a>
+                                    <?php if ($block->noOfVisibleReplies($ticket->getId()) !== 0) : ?>
+                                        <a class="action view" href="<?= $block->escapeUrl($block->getUrl('support/reply/replylist', ['id' => $ticket->getId()])) ?>">
+                                            <span><?= $block->escapeHtml(__('View Replies')) ?></span>
+                                        </a>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                                </td>    
+                            </tr>
+                        <?php endif; ?> 
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+        <?php if ($block->getChildHtml('pager')) : ?>
+            <div class="support-ticket-toolbar toolbar bottom"><?= $block->getChildHtml('pager') ?></div>
+        <?php endif; ?>    
+    </div>
+    <div class="secondary">
+        <a class="action back" href="<?= $block->getBackUrl() ?>">
+            <span><?= $block->escapeHtml(__('Go Back')) ?></span>
+        </a>
+    </div>
+</div>
